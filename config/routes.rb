@@ -8,4 +8,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  match "todos", to: "todos#destroy_all", via: :delete
 end
