@@ -1,10 +1,6 @@
 require "test_helper"
 
 class TodosServiceTest < ActiveSupport::TestCase
-  setup do
-    @todo = todos(:one)
-  end
-
   test "get_all should return all todos" do
     todos = TodosService.get_all
     assert_equal [todos(:one), todos(:two)], todos.sort_by { |x| x[:order] }
