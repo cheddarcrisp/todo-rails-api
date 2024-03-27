@@ -10,7 +10,9 @@ class TodosService
 
     def create(title:, order:)
       guid = SecureRandom.uuid
-      Todo.create(title: title, order: order, guid: guid)
+      todo = Todo.create(title: title, order: order, guid: guid)
+      TodoEvents.created(todo: todo.slice(:guid, :title, :order).as_json)
+      todo
     end
 
     def update(id:, title:, completed:, order:)
