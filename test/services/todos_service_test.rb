@@ -15,6 +15,7 @@ class TodosServiceTest < ActiveSupport::TestCase
     todo = TodosService.create(title: "New title", order: 3)
     expected = Todo.new(
       id: todo[:id],
+      guid: todo[:guid],
       title: "New title",
       completed: false,
       order: 3
@@ -31,6 +32,7 @@ class TodosServiceTest < ActiveSupport::TestCase
     
     expected = Todo.new(
       id: one[:id],
+      guid: one[:guid],
       title: "New title",
       completed: true,
       order: 10

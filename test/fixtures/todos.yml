@@ -3,7 +3,9 @@
 one:
   title: MyString
   order: 1
+  guid: "1"
 
 two:
   title: MyString
   order: 2
+  guid: "2"

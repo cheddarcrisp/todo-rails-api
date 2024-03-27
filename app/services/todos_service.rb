@@ -9,7 +9,8 @@ class TodosService
     end
 
     def create(title:, order:)
-      Todo.create(title: title, order: order)
+      guid = SecureRandom.uuid
+      Todo.create(title: title, order: order, guid: guid)
     end
 
     def update(id:, title:, completed:, order:)
