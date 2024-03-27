@@ -12,13 +12,24 @@ class TodosServiceTest < ActiveSupport::TestCase
   end
 
   test "create should create todo" do
-    todo = TodosService.create(title: "New title", order: 3)
+    title = "New title"
+    guid = "3"
+    order = 3
+
+    SecureRandom.stubs(:uuid).returns("3")
+    TodoEvents.expects(:created).with(todo: {
+      "guid" => guid,
+      "title" => title,
+      "order" => order
+    })
+
+    todo = TodosService.create(title: title, order: order)
     expected = Todo.new(
       id: todo[:id],
-      guid: todo[:guid],
-      title: "New title",
+      guid: guid,
+      title: title,
       completed: false,
-      order: 3
+      order: order
     )
     assert_equal expected, todo
     todo = Todo.last
@@ -32,7 +43,7 @@ class TodosServiceTest < ActiveSupport::TestCase
     
     expected = Todo.new(
       id: one[:id],
-      guid: one[:guid],
+      guid: "1",
       title: "New title",
       completed: true,
       order: 10
