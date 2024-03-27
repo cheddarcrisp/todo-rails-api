@@ -9,7 +9,7 @@ class TodosService
     end
 
     def create(title:, order:)
-      Todo.create(title, order)
+      Todo.create(title: title, order: order)
     end
 
     def update(id:, title:, completed:, order:)
